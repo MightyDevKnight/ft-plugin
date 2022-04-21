@@ -1,0 +1,5 @@
+{
+    "tokenSetsDirPath": "tokens",
+    "tokenSetsPath": "tokens/*.json",
+    "tokenSetsThemeMetaPath": "tokens/.theme/themes.json"
+}

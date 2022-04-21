@@ -1,11 +1,9 @@
-const glob = require("glob");
+const fs = require("fs");
+const _ = require("lodash");
 const StyleDictionary = require("style-dictionary");
-const baseFiles = glob.sync(`tokens/01_base/**/*.json`);
-const themeFiles = glob.sync(`tokens/02_themes/**/*.json`);
-const semanticFiles = glob.sync(`tokens/03_semantic/**/*.json`);
-const componentFiles = glob.sync("tokens/04_component/**/*.json");
 const { Parser } = require("expr-eval");
 const { parseToRgba } = require("color2k");
+const path = require("path");
 
 console.log("Build started...");
 console.log("\n==============================================");
@@ -40,6 +38,7 @@ const fontWeightMap = {
 /**
  * Helper: Transforms math like Figma Tokens
  */
+
 const parser = new Parser();
 
 function checkAndEvaluateMath(expr) {
@@ -86,10 +85,10 @@ function transformFontWeights(value) {
 function transformHEXRGBa(value) {
   if (value.startsWith("rgba(#")) {
     const [hex, alpha] = value
-    .replace(")", "")
-    .split("rgba(")
-    .pop()
-    .split(", ");
+      .replace(")", "")
+      .split("rgba(")
+      .pop()
+      .split(", ");
     const [r, g, b] = parseToRgba(hex);
     return `rgba(${r}, ${g}, ${b}, ${alpha})`;
   } else {
@@ -102,9 +101,8 @@ function transformHEXRGBa(value) {
  * This currently works fine if every value uses an alias, but if any one of these use a raw value, it will not be transformed.
  */
 function transformShadow(shadow) {
-  const {x, y, blur, spread, color} = shadow
-  return `${x} ${y} ${blur} ${spread} ${color}`
-
+  const { x, y, blur, spread, color } = shadow;
+  return `${x} ${y} ${blur} ${spread} ${color}`;
 }
 
 /**
@@ -116,7 +114,8 @@ StyleDictionary.registerTransform({
   transitive: true,
   matcher: (token) => token.type === "typography",
   transformer: (token) => {
-    const {fontWeight, fontSize, lineHeight, fontFamily} = token.original.value;
+    const { fontWeight, fontSize, lineHeight, fontFamily } =
+      token.original.value;
     return `${fontWeight} ${fontSize}/${lineHeight} ${fontFamily}`;
   },
 });
@@ -191,7 +190,7 @@ StyleDictionary.registerTransform({
   transitive: true,
   matcher: (token) => token,
   // Putting this in strings seems to be required
-  transformer: (token) => `${checkAndEvaluateMath(token.value)}`
+  transformer: (token) => `${checkAndEvaluateMath(token.value)}`,
 });
 
 /**
@@ -202,7 +201,7 @@ StyleDictionary.registerFormat({
   formatter: function (dictionary, config) {
     return `${this.selector} {
 ${dictionary.allProperties
-  .map((prop) => (`  --${prop.name}: ${prop.value};`))
+  .map((prop) => `  --${prop.name}: ${prop.value};`)
   .join("\n")}
 }`;
   },
@@ -222,7 +221,10 @@ function convertToVariableIfNeeded(value) {
  */
 StyleDictionary.registerFormat({
   name: "css/typographyClasses",
-  formatter: (dictionary, config) => (dictionary.allProperties.map((prop) => (`
+  formatter: (dictionary, config) =>
+    dictionary.allProperties
+      .map(
+        (prop) => `
 .${prop.name} {
   font: var(--${prop.name});
   letter-spacing: ${convertToVariableIfNeeded(
@@ -232,7 +234,9 @@ StyleDictionary.registerFormat({
   text-decoration: ${convertToVariableIfNeeded(
     prop.original.value.textDecoration
   )};
-}`)).join("\n"))
+}`
+      )
+      .join("\n"),
 });
 
 function getTypographyConfig() {
@@ -264,24 +268,10 @@ function getTypographyConfig() {
   };
 }
 
-function getStyleDictionaryConfig(themePath, baseOnly = false) {
-  console.log(
-    "Building: ",
-    themePath,
-    `${baseOnly ? "Base Only" : "All sets"}`
-  );
-  const fileName = themePath.split("/").pop().replace(".json", "");
-  const sourceFiles = baseOnly
-    ? ["tokens/01_base/**/*.+(json)"]
-    : [
-        "tokens/01_base/**/*.+(json)",
-        themePath,
-        ...semanticFiles,
-        "tokens/04_component/**/*.+(json)",
-      ];
-
+function getStyleDictionaryConfig(themeName, themeTokenSets) {
+  console.log(themeTokenSets);
   return {
-    source: sourceFiles,
+    source: themeTokenSets,
     platforms: {
       css: {
         transforms: [
@@ -294,18 +284,12 @@ function getStyleDictionaryConfig(themePath, baseOnly = false) {
           "shadow/shorthand",
           "name/cti/kebab",
         ],
-        buildPath: `dist/css/`,
+        buildPath: "dist/css/",
         files: [
           {
-            destination: baseOnly
-              ? `base/${fileName}.css`
-              : `themes/${fileName}.css`,
+            destination: `${themeName}.css`,
             format: "css/variables",
-            selector: baseOnly ? ":root" : `.${fileName}-theme`,
-            filter: (token) =>
-              [themePath, ...semanticFiles, ...componentFiles].includes(
-                token.filePath
-              ),
+            selector: `.${themeName}`,
           },
         ],
       },
@@ -313,21 +297,26 @@ function getStyleDictionaryConfig(themePath, baseOnly = false) {
   };
 }
 
-themeFiles.map(function (theme) {
-  const SD = StyleDictionary.extend(getStyleDictionaryConfig(theme));
+const configBlob = fs.readFileSync("config.json");
+const config = JSON.parse(configBlob);
+const dirPath = config.tokenSetsDirPath;
+const themeMetaBlob = fs.readFileSync(config.tokenSetsThemeMetaPath, "utf-8");
+const themeMeta = JSON.parse(themeMetaBlob);
 
+themeMeta.map((theme) => {
+  const { name: themeName, selectedTokenSets } = theme;
+  const themeTokenSets = selectedTokenSets
+    ? _.map(
+        Object.keys(selectedTokenSets),
+        (key) =>
+          dirPath + "/" + key.slice(key.indexOf("token-sets-") + 11) + ".json"
+      )
+    : [];
+  const SD = StyleDictionary.extend(
+    getStyleDictionaryConfig(themeName, themeTokenSets)
+  );
   SD.buildAllPlatforms();
 });
-
-baseFiles.map(function (file) {
-  const SD = StyleDictionary.extend(getStyleDictionaryConfig(file, true));
-
-  SD.buildAllPlatforms();
-});
-
-const SD = StyleDictionary.extend(getTypographyConfig());
-
-SD.buildAllPlatforms();
 
 console.log("\n==============================================");
 console.log("\nBuild completed!");
