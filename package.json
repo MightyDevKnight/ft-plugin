@@ -7,6 +7,7 @@
     "expr-eval": "^2.0.2",
     "fs": "^0.0.1-security",
     "lodash": "^4.17.21",
-    "style-dictionary": "^3.7.0"
+    "style-dictionary": "^3.7.0",
+    "upload-files": "^0.1.8"
   }
 }

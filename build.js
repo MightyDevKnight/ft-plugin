@@ -225,48 +225,21 @@ StyleDictionary.registerFormat({
     dictionary.allProperties
       .map(
         (prop) => `
-.${prop.name} {
-  font: var(--${prop.name});
-  letter-spacing: ${convertToVariableIfNeeded(
-    prop.original.value.letterSpacing
-  )};
-  text-transform: ${convertToVariableIfNeeded(prop.original.value.textCase)};
-  text-decoration: ${convertToVariableIfNeeded(
-    prop.original.value.textDecoration
-  )};
-}`
+        .${prop.name} {
+          font: var(--${prop.name});
+          letter-spacing: ${convertToVariableIfNeeded(
+            prop.original.value.letterSpacing
+          )};
+          text-transform: ${convertToVariableIfNeeded(
+            prop.original.value.textCase
+          )};
+          text-decoration: ${convertToVariableIfNeeded(
+            prop.original.value.textDecoration
+          )};
+        }`
       )
       .join("\n"),
 });
-
-function getTypographyConfig() {
-  return {
-    source: [
-      "tokens/01_base/**/*.+(json)",
-      "tokens/03_semantic/typography.json",
-    ],
-    platforms: {
-      css: {
-        transforms: [
-          "resolveMath",
-          "size/px",
-          "type/fontWeight",
-          "size/letterspacing",
-          "name/cti/kebab",
-        ],
-        buildPath: `dist/css/`,
-        files: [
-          {
-            destination: `base/typography-classes.css`,
-            format: "css/typographyClasses",
-            selector: ":root",
-            filter: (token) => token.type === "typography",
-          },
-        ],
-      },
-    },
-  };
-}
 
 function getStyleDictionaryConfig(themeName, themeTokenSets) {
   console.log(themeTokenSets);
