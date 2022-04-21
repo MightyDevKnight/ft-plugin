@@ -281,8 +281,7 @@ themeMeta.map((theme) => {
   const themeTokenSets = selectedTokenSets
     ? _.map(
         Object.keys(selectedTokenSets),
-        (key) =>
-          dirPath + "/" + key.slice(key.indexOf("token-sets-") + 11) + ".json"
+        (key) => dirPath + "/" + key + ".json"
       )
     : [];
   const SD = StyleDictionary.extend(
