@@ -241,6 +241,7 @@ StyleDictionary.registerFormat({
       .join("\n"),
 });
 
+const buildPath = "dist/css/";
 function getStyleDictionaryConfig(themeName, themeTokenSets) {
   console.log(themeTokenSets);
   return {
@@ -273,8 +274,9 @@ function getStyleDictionaryConfig(themeName, themeTokenSets) {
 const configBlob = fs.readFileSync("config.json");
 const config = JSON.parse(configBlob);
 const dirPath = config.tokenSetsDirPath;
-const themeMetaBlob = fs.readFileSync(config.tokenSetsThemeMetaPath, "utf-8");
+const themeMetaBlob = fs.readFileSync(config.tokenSetsThemeMetaPath);
 const themeMeta = JSON.parse(themeMetaBlob);
+let outputThemeMeta = themeMeta;
 
 themeMeta.map((theme) => {
   const { name: themeName, selectedTokenSets } = theme;
@@ -287,6 +289,7 @@ themeMeta.map((theme) => {
   const SD = StyleDictionary.extend(
     getStyleDictionaryConfig(themeName, themeTokenSets)
   );
+
   SD.buildAllPlatforms();
 });
 
