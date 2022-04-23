@@ -12,7 +12,7 @@ const headerHTML = `
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600;700&family=IBM+Plex+Sans:wght@300;400;600;700&family=IBM+Plex+Serif:wght@300;400;600;700&display=swap"
         rel="stylesheet"
     />
-    ${themeMetaData.map(themeMeta => `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/${config.owner}/${config.repo}@latest/${themeMeta.path}" />`)}
+    ${themeMetaData.reduce((acc, themeMeta) => acc + `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/${config.owner}/${config.repo}@latest/${themeMeta.path}" />`, '')}
 `;
 
 fs.writeFileSync('.storybook/manager-head.html', headerHTML, 'utf-8');
