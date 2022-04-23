@@ -1,0 +1,40 @@
+:host {
+  display: block;
+}
+:host([position='side']) {
+  display: inline-block;
+  margin-right: 32px;
+}
+.sux-field-label {
+  font-family: var(--field-label-font-family);
+  color: var(--field-label-default-text-color);
+  margin-bottom: var(--field-label-margin-bottom);
+  &--sizeS {
+    font-size: var(--field-label-s-text-size);
+  }
+  &--sizeM {
+    font-size: var(--field-label-m-text-size);
+  }
+  &--sizeL {
+    font-size: var(--field-label-l-text-size);
+  }
+  &--sizeXL {
+    font-size: var(--field-label-xl-text-size);
+  }
+  // &--positionTop {
+  //   // position: relative;
+  // }
+
+  &--required {
+    icon {
+      display: inline-block !important;
+    }
+  }
+  icon {
+    display: none;
+  }
+  &--disabled {
+    color: var(--field-label-disabled-text-color);
+    cursor: none;
+  }
+}

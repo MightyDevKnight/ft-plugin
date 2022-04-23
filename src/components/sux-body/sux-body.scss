@@ -1,0 +1,44 @@
+:host {
+  display: block;
+}
+.sux-body {
+  line-height: var(--body-line-height);
+  font-weight: var(--body-font-weight);
+  & em {
+    font-weight: var(--body-emphasized);
+  }
+  & strong {
+    font-style: var(--body-strong);
+  }
+
+  &--serif {
+    font-family: var(--body-serif);
+  }
+  &--sans-serif {
+    font-family: var(--body-sans);
+  }
+  &--mono {
+    font-family: var(--body-mono);
+  }
+  &--xs {
+    font-size: var(--body-xs-font-size);
+  }
+  &--s {
+    font-size: var(--body-s-font-size);
+  }
+  &--m {
+    font-size: var(--body-m-font-size);
+  }
+  &--l {
+    font-size: var(--body-l-font-size);
+  }
+  &--xl {
+    font-size: var(--body-xl-font-size);
+  }
+  &--xxl {
+    font-size: var(--body-xxl-font-size);
+  }
+  &--xxxl {
+    font-size: var(--body-xxxl-font-size);
+  }
+}

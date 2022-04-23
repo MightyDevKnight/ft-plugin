@@ -1,0 +1,124 @@
+import { extractArgTypes } from '@pxtrn/storybook-addon-docs-stencil';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { html, render } from 'lit-html';
+
+<Meta title="Components/Typography/Body" component="sux-body" argTypes={extractArgTypes('sux-body')} />
+
+# Typography / Body
+
+Body is a typography component used to create various levels of hierarchies between text.
+
+export const BodyDefault = args => {
+  return html`
+    <div style="padding: 10%; justify-content: center; gap:16px;">
+      <sux-body .size="${args.size}" .classification="${args.classification}">
+        From the design point of view, each component has a number of options. These options and their names are platform agnostic, and each implementation should adapt these to
+        fit into their framework.
+      </sux-body>
+    </div>
+  `;
+};
+
+<Canvas>
+  <Story name="BodyDefault">{BodyDefault.bind()}</Story>
+</Canvas>
+
+## Table of options / API
+
+From the design point of view, each component has a number of options. These options and their names are platform agnostic, and each implementation should adapt these to fit into their framework.
+
+<ArgsTable of="sux-body" />
+
+### Size
+
+
+
+export const BodySize = args => {
+  return html`
+    <div style="padding: 10%; justify-content: center; gap:16px;">
+      <!-- Extra Small -->
+      <sux-body size="xs" classification="mono">Extra Small</sux-body>
+      <sux-body size="xs" .classification="${args.classification}">
+        From the design point of view, each component has a number of options. These options and their names are platform agnostic, and each implementation should adapt these to
+        fit into their framework.
+      </sux-body>
+      <br />
+      <!-- Extra Small -->
+      <sux-body size="xs" classification="mono"> Small</sux-body>
+      <sux-body size="s" .classification="${args.classification}">
+        From the design point of view, each component has a number of options. These options and their names are platform agnostic, and each implementation should adapt these to
+        fit into their framework.
+      </sux-body>
+      <br />
+      <!-- Medium -->
+      <sux-body size="xs" classification="mono">Medium</sux-body>
+      <sux-body size="m" .classification="${args.classification}">
+        From the design point of view, each component has a number of options. These options and their names are platform agnostic, and each implementation should adapt these to
+        fit into their framework.
+      </sux-body>
+      <br />
+      <!-- Large -->
+      <sux-body size="xs" classification="mono">Large</sux-body>
+      <sux-body size="l" .classification="${args.classification}">
+        From the design point of view, each component has a number of options. These options and their names are platform agnostic, and each implementation should adapt these to
+        fit into their framework.
+      </sux-body>
+      <br />
+      <!-- X Large -->
+      <sux-body size="xs" classification="mono">Extra Large</sux-body>
+      <sux-body size="xl" .classification="${args.classification}">
+        From the design point of view, each component has a number of options. These options and their names are platform agnostic, and each implementation should adapt these to
+        fit into their framework.
+      </sux-body>
+      <br />
+      <!-- XX Large -->
+      <sux-body size="xs" classification="mono">XX Large</sux-body>
+      <sux-body size="xxl" .classification="${args.classification}">
+        From the design point of view, each component has a number of options. These options and their names are platform agnostic, and each implementation should adapt these to
+        fit into their framework.
+      </sux-body>
+      <br />
+      <!-- Extra Extra Extra Large -->
+      <sux-body size="xs" classification="mono">XXX Large</sux-body>
+      <sux-body size="xxxl" .classification="${args.classification}">
+        From the design point of view, each component has a number of options. These options and their names are platform agnostic, and each implementation should adapt these to
+        fit into their framework.
+      </sux-body>
+    </div>
+  `;
+};
+
+<Canvas>
+  <Story name="BodySize">{BodySize.bind()}</Story>
+</Canvas>
+
+### Classification
+
+Body can be displayed in serif, sans serif (default) or mono.
+
+export const BodyClassification = args => {
+  return html`
+    <div style="padding: 10%; justify-content: center; gap:16px;">
+      <sux-body size="xs" classification="mono">Serif</sux-body>
+      <sux-body size="l" classification="serif">
+        From the design point of view, each component has a number of options. These options and their names are platform agnostic, and each implementation should adapt these to
+        fit into their framework.
+      </sux-body>
+      <sux-body size="xs" classification="mono">Sans Serif</sux-body>
+      <sux-body size="l" classification="sans-serif">
+        From the design point of view, each component has a number of options. These options and their names are platform agnostic, and each implementation should adapt these to
+        fit into their framework.
+      </sux-body>
+      <sux-body size="xs" classification="mono">Mono</sux-body>
+      <sux-body size="l" classification="mono">
+        From the design point of view, each component has a number of options. These options and their names are platform agnostic, and each implementation should adapt these to
+        fit into their framework.
+      </sux-body>
+    </div>
+  `;
+};
+
+<Canvas>
+  <Story name="BodyClassification">{BodyClassification.bind()}</Story>
+</Canvas>
+

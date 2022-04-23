@@ -1,0 +1,35 @@
+:host {
+  display: block;
+}
+.sux-help-text {
+  font-family: var(--help-text-font-family);
+  &--neutral {
+    color: var(--help-text-default-text-color);
+  }
+  &--negative {
+    color: var(--help-text-error-text-color);
+  }
+  &--sizeS {
+    font-size: var(--help-text-s-text-size);
+  }
+  &--sizeM {
+    font-size: var(--help-text-m-text-size);
+  }
+  &--sizeL {
+    font-size: var(--help-text-l-text-size);
+  }
+  &--sizeXL {
+    font-size: var(--help-text-xl-text-size);
+  }
+  &--disabled {
+    color: var(--help-text-disabled-text-color);
+  }
+  &--icon {
+    icon {
+      display: inline-block !important;
+    }
+  }
+  icon {
+    display: none;
+  }
+}

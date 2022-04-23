@@ -1,0 +1,127 @@
+import { extractArgTypes } from '@pxtrn/storybook-addon-docs-stencil';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { html, render } from 'lit-html';
+
+<Meta title="Components/Navigation/Avatar" component="sux-avatar" argTypes={extractArgTypes('sux-avatar')} />
+
+# Avatar
+
+Avatars are used to represent a person or object.
+
+export const Default = args => {
+  return html`
+  <div style="padding: 10%; display: flex; justify-content: center; gap:16px;">
+  <sux-avatar .size="${args.size}" image-url="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"></sux-avatar>
+  <sux-avatar .size="${args.size}" initials="SE"></sux-avatar>
+  <sux-avatar .size="${args.size}"></sux-avatar>
+  <sux-avatar .size="${args.size}"><sux-icon name="archive-fill" slot="icon"></sux-icon></sux-avatar>
+  </div>
+  `;
+};
+
+<Canvas>
+  <Story name="Playground">{Default.bind()}</Story>
+</Canvas>
+
+
+
+## Table of options / API
+
+From the design point of view, each component has a number of options. These options and their names are platform agnostic, and each implementation should adapt these to fit into their framework.
+
+<ArgsTable of="sux-avatar" />
+
+### Size
+
+Avatars can be of the following sizes.
+
+export const Size = args => {
+  return html`
+  <div style="padding: 5%; display: flex; justify-content: center; gap:24px; align-items: center">
+  <sux-avatar size="xxs" image-url="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"></sux-avatar>
+  <sux-avatar size="xs" image-url="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"></sux-avatar>
+  <sux-avatar size="s" image-url="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"></sux-avatar>
+  <sux-avatar size="m" image-url="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"></sux-avatar>
+  <sux-avatar size="l" image-url="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"></sux-avatar>
+  <sux-avatar size="xl" image-url="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"></sux-avatar>
+  <sux-avatar size="xxl" image-url="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"></sux-avatar>
+  <sux-avatar size="xxxl" image-url="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"></sux-avatar>
+  </div>
+  <div style="padding: 5%; display: flex; justify-content: center; gap:24px;  align-items: center">
+  <sux-avatar size="xxs" initials="SE"></sux-avatar>
+  <sux-avatar size="xs" initials="SE"></sux-avatar>
+  <sux-avatar size="s" initials="SE"></sux-avatar>
+  <sux-avatar size="m" initials="SE"></sux-avatar>
+  <sux-avatar size="l" initials="SE"></sux-avatar>
+  <sux-avatar size="xl" initials="SE"></sux-avatar>
+  <sux-avatar size="xxl" initials="SE"></sux-avatar>
+  <sux-avatar size="xxxl" initials="SE"></sux-avatar>
+  </div>
+  <div style="padding: 5%; display: flex; justify-content: center; gap:24px;  align-items: center">
+  <sux-avatar size="xxs" ></sux-avatar>
+  <sux-avatar size="xs" ></sux-avatar>
+  <sux-avatar size="s" ></sux-avatar>
+  <sux-avatar size="m" ></sux-avatar>
+  <sux-avatar size="l" ></sux-avatar>
+  <sux-avatar size="xl" ></sux-avatar>
+  <sux-avatar size="xxl" ></sux-avatar>
+  <sux-avatar size="xxxl" ></sux-avatar>
+  </div>
+  `;
+};
+
+<Canvas>
+  <Story name="Size">{Size.bind()}</Story>
+</Canvas>
+
+
+### Image
+
+To use an image for the avatar, set the image-url and label attributes. This will take priority and be shown over initials and icons.
+
+export const Image = args => {
+  return html`
+  <div style="padding: 10%; display: flex; justify-content: center; gap:16px;">
+  <sux-avatar   label="a smiling girl" .size="${args.size}" image-url="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"></sux-avatar>
+  </div>
+  `;
+};
+
+<Canvas>
+  <Story name="Image">{Image.bind()}</Story>
+</Canvas>
+
+### Initials
+
+When you don't have an image to use, you can set the initials attribute to show something more personalized than an icon.
+
+export const Initials = args => {
+  return html`
+  <div style="padding: 10%; display: flex; justify-content: center; gap:16px;">
+  <sux-avatar   label="a smiling girl" .size="${args.size}" initials="SDS"></sux-avatar>
+  </div>
+  `;
+};
+
+<Canvas>
+  <Story name="Initials">{Initials.bind()}</Story>
+</Canvas>
+
+### Icon
+
+When no image or initials are set, an icon will be shown. The default avatar shows a generic "user" icon, but you can customize this with the icon slot.
+
+export const Icon = args => {
+  return html`
+  <div style="padding: 10%; display: flex; justify-content: center; gap:16px;">
+  <sux-avatar  label="a smiling girl" .size="${args.size}"></sux-avatar>
+  <sux-avatar  label="a smiling girl" .size="${args.size}"><sux-icon slot="icon" name="archive-fill"></sux-icon></sux-avatar>
+  </div>
+  `;
+};
+
+<Canvas>
+  <Story name="Icon">{Icon.bind()}</Story>
+</Canvas>
+
+

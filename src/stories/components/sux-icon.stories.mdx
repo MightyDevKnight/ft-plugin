@@ -1,0 +1,54 @@
+import { extractArgTypes } from '@pxtrn/storybook-addon-docs-stencil';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks';
+import { html, render } from 'lit-html';
+
+<Meta title="Components/Icon" component="sux-icon" argTypes={extractArgTypes('sux-icon')} />
+
+# Icon
+
+Icons are symbols that can be used to represent various options within an application.
+
+Shoelace comes bundled with over 1,500 icons courtesy of the Bootstrap Icons project. These icons are part of the default icon library. If you prefer, you can register custom icon libraries as well.
+
+## Table of options / API
+
+From the design point of view, each component has a number of options. These options and their names are platform agnostic, and each implementation should adapt these to fit into their framework.
+
+<ArgsTable of="sux-icon" />
+
+### Sizing
+
+Icons are sized relative to the current font size. To change their size, set the font-size property on the icon itself or on a parent element as shown below.
+
+### Labels
+
+For non-decorative icons, use the label attribute to announce it to assistive devices.
+
+### Icons
+
+export const Default = args => {
+  return html`
+    <div style="padding: 10%; display: flex; justify-content: center; gap:16px; flex-direction: column;">
+      <div style="font-size: 36px; width:100%">
+      <sux-heading size="xs" classification="sans-serif" weight="bold">Custom size & color</sux-heading>
+      <sux-icon name="suit-heart-fill" style="color:red"></sux-icon>
+      <sux-icon name="alarm-fill" style="color:green"></sux-icon>
+      <sux-icon name="archive-fill" style="color:purple"></sux-icon>
+      </div>
+      <div>
+      <sux-heading size="xs" classification="sans-serif" weight="bold">Filled Icons</sux-heading>
+      <sux-icon name="palette-fill">helo</sux-icon>
+      <sux-icon name="play-circle-fill">helo</sux-icon>
+      <sux-icon name="record-circle-fill">helo</sux-icon>
+      <sux-heading size="xs" classification="sans-serif" weight="bold">Outlined icons</sux-heading>
+      <sux-icon name="palette">helo</sux-icon>
+      <sux-icon name="play-circle">helo</sux-icon>
+      <sux-icon name="record-circle">helo</sux-icon>
+      </div>
+    </div>
+  `;
+};
+
+<Canvas>
+  <Story name="Playground">{Default.bind()}</Story>
+</Canvas>

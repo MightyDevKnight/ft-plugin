@@ -1,0 +1,155 @@
+:host {
+  display: inline-flex;
+}
+.sux-tag {
+  display: inline-flex;
+  font-family: var(--tag-font-family);
+  font-weight: var(--tag-font-weight);
+  border-radius: var(--tag-border-radius);
+  gap: var(--tag-space-between);
+  box-sizing: border-box;
+  // align-content: center;
+  .prefix,
+  .suffix,
+  .content {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+  }
+  &--solid {
+    &.--info {
+      background-color: var(--tag-solid-info-background-color);
+      color: var(--tag-solid-info-text-color);
+    }
+    &.--warning {
+      background-color: var(--tag-solid-warning-background-color);
+      color: var(--tag-solid-warning-text-color);
+    }
+    &.--error {
+      background-color: var(--tag-solid-error-background-color);
+      color: var(--tag-solid-error-text-color);
+    }
+    &.--success {
+      background-color: var(--tag-solid-success-background-color);
+      color: var(--tag-solid-success-text-color);
+    }
+    &.--neutral {
+      background-color: var(--tag-solid-neutral-background-color);
+      color: var(--tag-solid-neutral-text-color);
+    }
+  }
+  &--inverted {
+    &.--info {
+      background-color: var(--tag-inverted-info-background-color);
+      color: var(--tag-inverted-info-text-color);
+    }
+    &.--warning {
+      background-color: var(--tag-inverted-warning-background-color);
+      color: var(--tag-inverted-warning-text-color);
+    }
+    &.--error {
+      background-color: var(--tag-inverted-error-background-color);
+      color: var(--tag-inverted-error-text-color);
+    }
+    &.--success {
+      background-color: var(--tag-inverted-success-background-color);
+      color: var(--tag-inverted-success-text-color);
+    }
+    &.--neutral {
+      background-color: var(--tag-inverted-neutral-background-color);
+      color: var(--tag-inverted-neutral-text-color);
+    }
+  }
+  &--outlined {
+    border-width: 1px;
+    border-style: solid;
+    &.--info {
+      background-color: var(--tag-outlined-info-background-color);
+      color: var(--tag-outlined-info-text-color);
+      border-color: var(--tag-outlined-info-border-color);
+    }
+    &.--warning {
+      background-color: var(--tag-outlined-warning-background-color);
+      color: var(--tag-outlined-warning-text-color);
+      border-color: var(--tag-outlined-warning-border-color);
+    }
+    &.--error {
+      background-color: var(--tag-outlined-error-background-color);
+      color: var(--tag-outlined-error-text-color);
+      border-color: var(--tag-outlined-error-border-color);
+    }
+    &.--success {
+      background-color: var(--tag-outlined-success-background-color);
+      color: var(--tag-outlined-success-text-color);
+      border-color: var(--tag-outlined-success-border-color);
+    }
+    &.--neutral {
+      background-color: var(--tag-outlined-neutral-background-color);
+      color: var(--tag-outlined-neutral-text-color);
+      border-color: var(--tag-outlined-neutral-border-color);
+    }
+  }
+  &--borderless {
+    &.--info {
+      background-color: var(--tag-borderless-info-background-color);
+      color: var(--tag-borderless-info-text-color);
+    }
+    &.--warning {
+      background-color: var(--tag-borderless-warning-background-color);
+      color: var(--tag-borderless-warning-text-color);
+    }
+    &.--error {
+      background-color: var(--tag-borderless-error-background-color);
+      color: var(--tag-borderless-error-text-color);
+    }
+    &.--success {
+      background-color: var(--tag-borderless-success-background-color);
+      color: var(--tag-borderless-success-text-color);
+    }
+    &.--neutral {
+      background-color: var(--tag-borderless-neutral-background-color);
+      color: var(--tag-borderless-neutral-text-color);
+    }
+  }
+
+  &--sizeS {
+    font-size: var(--tag-s-text-size);
+    padding-right: var(--tag-s-padding-right);
+    height: var(--tag-s-height);
+    .prefix,
+    .suffix {
+      font-size: var(--tag-s-icon-size);
+    }
+    padding-left: var(--tag-s-padding-left);
+  }
+  &--sizeM {
+    font-size: var(--tag-m-text-size);
+    padding-right: var(--tag-m-padding-right);
+    height: var(--tag-m-height);
+    .prefix,
+    .suffix {
+      font-size: var(--tag-m-icon-size);
+    }
+    padding-left: var(--tag-m-padding-left);
+  }
+  &--sizeL {
+    font-size: var(--tag-l-text-size);
+    padding-right: var(--tag-l-padding-right);
+    height: var(--tag-l-height);
+    .prefix,
+    .suffix {
+      font-size: var(--tag-l-icon-size);
+    }
+    padding-left: var(--tag-l-padding-left);
+  }
+  &--sizeXL {
+    font-size: var(--tag-xl-text-size);
+    padding-right: var(--tag-xl-padding-right);
+    height: var(--tag-xl-height);
+    .prefix,
+    .suffix {
+      font-size: var(--tag-xl-icon-size);
+    }
+    padding-left: var(--tag-xl-padding-left);
+  }
+}

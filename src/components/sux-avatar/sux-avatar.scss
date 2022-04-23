@@ -1,0 +1,94 @@
+:host {
+  display: inline-block;
+  width: auto;
+}
+.sux-avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--avatar-background-color);
+  font-family: var(--avatar-font-family);
+  border-color: var(--avatar-border-color);
+  color: var(--avatar-font-color);
+  border-radius: var(--avatar-border-radius);
+  overflow: hidden;
+  border-style: solid;
+  box-sizing: border-box;
+
+  &--icon {
+    // line-height: 100%;
+    flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  }
+
+  // Avatar Sizes
+  &--xxs {
+    height: var(--avatar-xxs-height);
+    width: var(--avatar-xxs-width);
+    font-size: var(--avatar-xxs-font-size);
+    border-width: var(--avatar-border-width);
+    // icon size should be added
+  }
+
+  &--xs {
+    height: var(--avatar-xs-height);
+    width: var(--avatar-xs-width);
+    font-size: var(--avatar-xs-font-size);
+    border-width: var(--avatar-border-width);
+    // icon size should be added
+  }
+
+  &--s {
+    height: var(--avatar-s-height);
+    width: var(--avatar-s-width);
+    font-size: var(--avatar-s-font-size);
+    border-width: var(--avatar-border-width);
+    // icon size should be added
+  }
+
+  &--m {
+    height: var(--avatar-m-height);
+    width: var(--avatar-m-width);
+    font-size: var(--avatar-m-font-size);
+    border-width: var(--avatar-border-width);
+    // icon size should be added
+  }
+
+  &--l {
+    height: var(--avatar-l-height);
+    width: var(--avatar-l-width);
+    font-size: var(--avatar-l-font-size);
+    border-width: var(--avatar-border-width);
+    // icon size should be added
+  }
+
+  &--xl {
+    height: var(--avatar-xl-height);
+    width: var(--avatar-xl-width);
+    font-size: var(--avatar-xl-font-size);
+    border-width: var(--avatar-border-width);
+    // icon size should be added
+  }
+
+  &--xxl {
+    height: var(--avatar-xxl-height);
+    width: var(--avatar-xxl-width);
+    font-size: var(--avatar-xxl-font-size);
+    border-width: var(--avatar-border-width);
+    // icon size should be added
+  }
+
+  &--xxxl {
+    width: var(--avatar-xxxl-width);
+    height: var(--avatar-xxxl-height);
+    font-size: var(--avatar-xxxl-font-size);
+  }
+
+  &--img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
