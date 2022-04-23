@@ -241,9 +241,7 @@ StyleDictionary.registerFormat({
       .join("\n"),
 });
 
-const buildPath = "dist/css/";
 function getStyleDictionaryConfig(themeName, themeTokenSets) {
-  console.log(themeTokenSets);
   return {
     source: themeTokenSets,
     platforms: {
@@ -258,7 +256,7 @@ function getStyleDictionaryConfig(themeName, themeTokenSets) {
           "shadow/shorthand",
           "name/cti/kebab",
         ],
-        buildPath: "dist/css/",
+        buildPath: `dist/css/`,
         files: [
           {
             destination: `${themeName}.css`,
@@ -276,9 +274,8 @@ const config = JSON.parse(configBlob);
 const dirPath = config.tokenSetsDirPath;
 const themeMetaBlob = fs.readFileSync(config.tokenSetsThemeMetaPath);
 const themeMeta = JSON.parse(themeMetaBlob);
-let outputThemeMeta = themeMeta;
 
-themeMeta.map((theme) => {
+const themeOutput = themeMeta.map((theme) => {
   const { name: themeName, selectedTokenSets } = theme;
   const themeTokenSets = selectedTokenSets
     ? _.map(
@@ -286,12 +283,13 @@ themeMeta.map((theme) => {
         (key) => dirPath + "/" + key + ".json"
       )
     : [];
-  const SD = StyleDictionary.extend(
-    getStyleDictionaryConfig(themeName, themeTokenSets)
-  );
-
+  const themeConfig = getStyleDictionaryConfig(themeName, themeTokenSets);
+  const SD = StyleDictionary.extend(themeConfig);
   SD.buildAllPlatforms();
+  return { ...theme, path: `${themeConfig.css.buildPath}${themeName}.css` };
 });
+
+fs.writeFileSync("dist/themes-storybook.json", JSON.stringify(themeOutput));
 
 console.log("\n==============================================");
 console.log("\nBuild completed!");
