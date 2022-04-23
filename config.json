@@ -1,7 +1,1 @@
-{
-    "tokenSetsDirPath": "tokens1",
-    "tokenSetsPath": "tokens1/*.json",
-    "tokenSetsThemeMetaPath": "themes.json",
-    "owner": "MightyDevKnight",
-    "repo": "ft-plugin"
-}
+{"tokenSetsDirPath":"tokens2","tokenSetsPath":"tokens2/*.json","tokenSetsThemeMetaPath":"themes.json","owner":"MightyDevKnight","repo":"ft-plugin"}
