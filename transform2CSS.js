@@ -286,7 +286,12 @@ const themeOutput = themeMeta.map((theme) => {
   const themeConfig = getStyleDictionaryConfig(themeName, themeTokenSets);
   const SD = StyleDictionary.extend(themeConfig);
   SD.buildAllPlatforms();
-  return { ...theme, path: `${themeConfig.css.buildPath}${themeName}.css` };
+  return {
+    name: themeName,
+    class: themeName,
+    color: "#ff00ff",
+    path: `${themeConfig.css.buildPath}${themeName}.css`,
+  };
 });
 
 fs.writeFileSync("dist/themes-storybook.json", JSON.stringify(themeOutput));
