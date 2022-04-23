@@ -1,0 +1,14 @@
+{
+  "color": {
+    "slate": {
+      "0": {
+        "value": "#b09f9f",
+        "type": "color"
+      },
+      "900": {
+        "value": "#2c0303",
+        "type": "color"
+      }
+    }
+  }
+}
