@@ -251,7 +251,8 @@ const themeMeta = JSON.parse(themeMetaBlob);
 
 const themeOutput = themeMeta.map(theme => {
   const { name: themeName, selectedTokenSets } = theme;
-  const themeTokenSets = selectedTokenSets ? _.map(Object.keys(selectedTokenSets), key => dirPath + '/' + key + '.json') : [];
+  const filteredTokenSets = selectedTokenSets ? _.filter(Object.keys(selectedTokenSets), key => selectedTokenSets[key] !== 'disabled') : [];
+  const themeTokenSets = _.map(filteredTokenSets, set => dirPath + '/' + set + '.json');
   const themeConfig = getStyleDictionaryConfig(themeName, themeTokenSets);
   const SD = StyleDictionary.extend(themeConfig);
   SD.buildAllPlatforms();
