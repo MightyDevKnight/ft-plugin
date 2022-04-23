@@ -6,7 +6,7 @@
  * - Storybook doc page will contain stencils component documentation (readme.md or inline)
  */
 import { extractArgTypes, extractComponentDescription, setStencilDocJson } from '@pxtrn/storybook-addon-docs-stencil';
-import themeMeta from '../dist/theme-storybook.json';
+import themeMeta from '../dist/themes-storybook.json';
 import docJson from '../docs.json';
 
 if (docJson) setStencilDocJson(docJson);
