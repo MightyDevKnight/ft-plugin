@@ -15,5 +15,5 @@ const headerHTML = `
     ${themeMetaData.map(themeMeta => `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/${config.owner}/${config.repo}@latest/${themeMeta.path}" />`)}
 `;
 
-fs.writeFileSync('.storybook/manager-header.html', headerHTML, 'utf-8');
-fs.writeFileSync('.storybook/preview-header.html', headerHTML, 'utf-8');
+fs.writeFileSync('.storybook/manager-head.html', headerHTML, 'utf-8');
+fs.writeFileSync('.storybook/preview-head.html', headerHTML, 'utf-8');
