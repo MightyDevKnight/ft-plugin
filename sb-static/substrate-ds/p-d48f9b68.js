@@ -1,1 +1,0 @@
-const n=(n,t,u,i,l,a)=>{let p=t.querySelector("input.aux-input");var r;(n||(r=t).shadowRoot&&r.attachShadow)&&(a||null==a?(p||(p=t.ownerDocument.createElement("input"),p.type="hidden",p.classList.add("aux-input"),t.appendChild(p)),p.disabled=l,p.name=u,p.value=i||""):p&&p.remove())};function t(n,t){if(t)return null!==n.querySelector(`[slot="${t}"]`)}export{t as h,n as r}

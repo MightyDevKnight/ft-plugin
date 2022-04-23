@@ -1,1 +1,0 @@
-export type TextAreaSize = 's'  | 'm' | 'l' | 'xl';

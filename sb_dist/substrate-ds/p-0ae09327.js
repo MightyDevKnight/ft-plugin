@@ -1,1 +1,0 @@
-const s="m",a="serif",r="regular",e="m",m="serif",f="m",i="sans-serif",l="regular",o="m",c="m",d="solid";export{e as B,o as C,f as D,s as H,c as T,m as a,a as b,r as c,d,i as e,l as f}
